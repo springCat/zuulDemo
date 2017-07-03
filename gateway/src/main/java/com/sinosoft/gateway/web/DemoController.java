@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by xujingfeng on 2017/4/1.
@@ -27,10 +28,12 @@ public class DemoController {
     ZuulHandlerMapping zuulHandlerMapping;
 
     @RequestMapping("/watchNowRoute")
-    public String watchNowRoute(){
+    public Set<String> watchNowRoute(){
         //可以用debug模式看里面具体是什么
         Map<String, Object> handlerMap = zuulHandlerMapping.getHandlerMap();
-        return "watchNowRoute";
+
+        Set<String> paths = handlerMap.keySet();
+        return paths;
     }
 
 
